@@ -12,6 +12,7 @@ namespace Project002.Repository.Models
 
         public string ClanName { get; set; }
         public List<War> Wars { get; set; }
+          
 
     }
 }
