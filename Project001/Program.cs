@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Project002.Repository.Interfaces;
 using Project002.Repository.Models;
 using Project002.Repository.Repositories;
+using Project002.Repository.Services;
 
 namespace Project001
 {
@@ -16,8 +17,7 @@ namespace Project001
             // Add services to the container.
 
             builder.Services.AddControllers();
-            string conStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+            string conStr = @"Server=SKAB3-PC1;Database=Project002;Trusted_Connection=true";
             //DI (Dependency Injection) - activation
             builder.Services.AddScoped<ISamuraiRepository, SamuraiRepo>();
             builder.Services.AddScoped<IWarRepository, WarRepo>();
@@ -28,7 +28,7 @@ namespace Project001
             builder.Services.AddScoped<IArmourRepository, ArmourRepo>();
             builder.Services.AddScoped<IRankRepository, RankRepo>();
             builder.Services.AddScoped<ITimePeriodRepository, TimePeriodRepo>();
-
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddDbContext<Dbcontext>(obj => obj.UseSqlServer(conStr));
 
             //cors thread problems
@@ -39,7 +39,7 @@ namespace Project001
                                       {
                                           policy.WithOrigins().AllowAnyOrigin()
                                                               .AllowAnyMethod()
-                                                              .AllowAnyMethod();
+                                                              .AllowAnyHeader();
                                       });
             });
 

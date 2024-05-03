@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Project002.Repository.DTOs;
 using Project002.Repository.Interfaces;
 using Project002.Repository.Models;
 using Project002.Repository.Repositories;
@@ -10,16 +12,16 @@ namespace Project001.Controllers
     public class SamuraiController : ControllerBase
     {
         private readonly ISamuraiRepository _samuraiRepo;
-
         //Constractor: is a special method in a class. It has the same name as the class name
         //can be used to assign arguments to fields when creating an object.
 
 
         //this is a constractor / and constractor is always called - not defined
         public SamuraiController(ISamuraiRepository repo) {
-        this._samuraiRepo = repo;
-        }
+            this._samuraiRepo = repo;
 
+        }
+        
 
 
         // GET: api/<SamuraiController>
@@ -28,6 +30,7 @@ namespace Project001.Controllers
           
         {
             var result = _samuraiRepo.GetAll();
+
             return result;
         }
 
@@ -36,9 +39,10 @@ namespace Project001.Controllers
         // POST api/<SamuraiController>
         //Signature- Prototype / method
         [HttpPost]
-        public void Create(Samurai samurai)
+        public ActionResult Create(Samurai samurai)
         {
-            _samuraiRepo.Create(samurai);
+            var sam = _samuraiRepo.Create(samurai);
+            return Ok(sam);
             
         }
 
@@ -89,6 +93,7 @@ namespace Project001.Controllers
             }
 
             // Call the Delete method in your repository to delete the Samurai object
+
             return _samuraiRepo.Delete(samuraiToDelete);
         }
     }

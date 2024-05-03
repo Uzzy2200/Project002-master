@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Project002.Repository.Models;
 using Microsoft.EntityFrameworkCore;
 using Project002.Repository.Interfaces;
-using Project002.Repository.Migrations;
+
 
 namespace Project002.Repository.Repositories
 {

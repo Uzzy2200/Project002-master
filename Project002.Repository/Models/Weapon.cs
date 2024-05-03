@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Text.Json.Serialization;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,10 @@ namespace Project002.Repository.Models
 {
     public class Weapon
     {
-        public int WeaponId { get; set; }
-        public string WeaponName { get; set; }
+        public int? WeaponId { get; set; }
+        public string? WeaponName { get; set; }
+        [JsonIgnore]
+        public List<Samurai>? Samurai { get; set; }
+
     }
 }

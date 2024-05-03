@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace Project002.Repository.Models
 {   /// <summary>
@@ -25,15 +26,24 @@ namespace Project002.Repository.Models
         public string Description { get; set; }
 
         public int Age { get; set; }
+        [JsonIgnore]
+        public Clan? Clan { get; set; } // Navigation property
+        [JsonIgnore]
+        public Rank? Rank { get; set; }
+        [JsonIgnore]
+        public List<War>? War { get; set; }
+        [JsonIgnore]
+        public List<Armour>? Armour { get; set; }
+        [JsonIgnore]
+        public List<Clothing>? Clothing { get; set; }
+        [JsonIgnore]
+        public List<Horse>? Horse { get; set; }
+        [JsonIgnore]
+        public List<Weapon>? Weapon { get; set; }
 
-        public int ClanId { get; set; }
 
-        public int TransportId { get; set; }
-
-        public int WarId { get; set; }
-        public int ArmourId { get; set; }
-        public int ClothingId { get; set; }
 
 
     }
 }
+

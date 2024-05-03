@@ -17,8 +17,7 @@ namespace Project002.Repository.Models
             // Add DbSet properties here to represent database tables
         }
 
-
-
+         
         public DbSet<Samurai> Samurai { get; set; }
 
         public DbSet<War> War { get; set; }

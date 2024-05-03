@@ -4,7 +4,7 @@
 
 namespace Project002.Repository.Migrations
 {
-    public partial class @new : Migration
+    public partial class _2505 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
